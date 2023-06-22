@@ -26,3 +26,31 @@ FROM
   parts_assembly
 WHERE
   finish_date IS NULL;
+
+
+
+--Title: Histogram of Tweets--
+--Summary: Assume you're given a table Twitter tweet data, write a query to obtain a histogram of tweets posted per user in 2022.--
+--Output the tweet count per user as the bucket and the number of Twitter users who fall into that bucket.--
+--NOTES: Discovered in the year 2022 there was two users who posted once and one user who posted twice.--
+
+SELECT
+  tweet_count_per_user AS tweet_bucket,
+  COUNT(user_id) AS users_num
+FROM
+(
+  SELECT
+   user_id,
+   COUNT(tweet_id) AS tweet_count_per_user
+  FROM
+   tweets
+  WHERE
+   tweet_date BETWEEN '2022-01-01' AND '2022-12-31'
+  GROUP BY
+   user_id
+) 
+  AS total_tweets
+GROUP BY tweet_count_per_user;
+
+
+
