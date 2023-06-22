@@ -1,5 +1,5 @@
---Title:Page With No Likes--
---Summary:Assume you're given two tables containing data about Facebook Pages and their respective likes (as in "Like a Facebook Page").--
+--Title: Page With No Likes--
+--Summary: Assume you're given two tables containing data about Facebook Pages and their respective likes (as in "Like a Facebook Page").--
 --Write a query to return the IDs of the Facebook pages that have zero likes. The output should be sorted in ascending order based on the page IDs.--
 --NOTES: Out of the 5 pages in the dataset, 2 returned with having no likes on the page--
 
@@ -11,3 +11,18 @@ LEFT JOIN page_likes AS likes
   ON pages.page_id = likes.page_id
 WHERE
   likes.page_id IS NULL;
+
+
+
+--Title: Unfinished Parts--
+--Summary: Tesla is investigating production bottlenecks and they need your help to extract the relevant data.--
+--Write a query that determines which parts with the assembly steps have initiated the assembly process but remain unfinished.--
+--NOTES: Wrote query to show which parts were in assembly with NULL finish dates.--
+
+SELECT
+  part,
+  assembly_step
+FROM
+  parts_assembly
+WHERE
+  finish_date IS NULL;
